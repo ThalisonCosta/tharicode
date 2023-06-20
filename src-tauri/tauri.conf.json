@@ -2,7 +2,7 @@
   "build": {
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build",
-    "devPath": "http://localhost:1120",
+    "devPath": "http://localhost:1420",
     "distDir": "../dist",
     "withGlobalTauri": true
   },
@@ -21,7 +21,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
+      "identifier": "com.tharicode.dev",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",

@@ -19,7 +19,7 @@ export default function Titlebar() {
   return <div id="titlebar" data-tauri-drag-region>
     <div className="flex items-center gap-1 5 pl-2">
       <img src="/tauri.svg" style={{ width: 10 }} alt="" />
-      <span className="text-xs uppercase">huditor</span>
+      <span className="text-xs uppercase">thaりcode</span>
     </div>
 
     <div className="titlebar-actions">
