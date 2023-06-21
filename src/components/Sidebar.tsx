@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { IFile } from "../types";
 import { open } from "@tauri-apps/api/dialog";
+
+import NavFiles from "./NavFiles";
+import { IFile, readDirectory } from "../helpers/filesys";
 
 export default function Sidebar() {
   const [projectName, setProjectName] = useState("");
@@ -14,6 +16,7 @@ export default function Sidebar() {
     if (!selected) return;
 
     setProjectName(selected as string)
+    readDirectory(selected + '/').then(setFiles)
   }
 
   return <aside id="sidebar" className="w-60 shrink-0 h-full bg-darken">
