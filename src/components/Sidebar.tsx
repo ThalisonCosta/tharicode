@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { open } from "@tauri-apps/api/dialog";
-
 import NavFiles from "./NavFiles";
 import { IFile, readDirectory } from "../helpers/filesys";
 
@@ -16,7 +15,10 @@ export default function Sidebar() {
     if (!selected) return;
 
     setProjectName(selected as string)
-    readDirectory(selected + '/').then(setFiles)
+    readDirectory(selected + '/').then(files => {
+      console.log(files)
+      setFiles(files)
+    })
   }
 
   return <aside id="sidebar" className="w-60 shrink-0 h-full bg-darken">
@@ -25,6 +27,7 @@ export default function Sidebar() {
       <span className="project-name whitespace-nowrap text-gray-400 text-xs">{projectName}</span>  
     </div>
     <div className="code-structure">
+      <NavFiles visible={true} files={files}/>
     </div>
   </aside>
 }
