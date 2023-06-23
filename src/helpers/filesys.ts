@@ -40,3 +40,14 @@ export const readDirectory = async (folderPath: string): Promise<IFile[]> => {
 
   return [...folders, ...entries]
 }
+
+export const writeFile = (path: string, content: string): Promise<String> => {
+  return new Promise((resolve, reject) => {
+    invoke("write_file", {path, content}).then((message: unknown) => {
+      if (message !== "OK") {
+        reject("failed to write file")
+      }
+      resolve(message as string)
+    })
+  });
+};
