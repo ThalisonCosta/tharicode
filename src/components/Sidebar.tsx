@@ -15,10 +15,7 @@ export default function Sidebar() {
     if (!selected) return;
 
     setProjectName(selected as string)
-    readDirectory(selected + '/').then(files => {
-      console.log(files)
-      setFiles(files)
-    })
+    readDirectory(selected + '/').then(setFiles)
   }
 
   return <aside id="sidebar" className="w-60 shrink-0 h-full bg-darken">
