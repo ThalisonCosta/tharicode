@@ -1,5 +1,5 @@
-import { invoke } from "@tauri-apps/api/tauri";
-import { v4 as uuid } from "uuid"
+import { invoke } from "@tauri-apps/api/tauri"
+import { v4 as uuid } from "uuid";
 import { saveFileObject } from "../storage/file";
 
 export interface IFile {
@@ -41,13 +41,10 @@ export const readDirectory = async (folderPath: string): Promise<IFile[]> => {
   return [...folders, ...entries]
 }
 
-export const writeFile = (path: string, content: string): Promise<String> => {
-  return new Promise((resolve, reject) => {
-    invoke("write_file", {path, content}).then((message: unknown) => {
-      if (message !== "OK") {
-        reject("failed to write file")
-      }
-      resolve(message as string)
-    })
-  });
-};
+export const writeFile = async (filePath: string, content: string): Promise<string> => {
+  const message = await invoke("write_file", { filePath, content });
+  if (message !== "OK") {
+    throw Error("failed to write file")
+  }
+  return message
+}
