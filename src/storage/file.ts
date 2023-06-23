@@ -1,15 +1,15 @@
-import { IFile } from "../helpers/filesys";
+import { IFile } from "../helpers/filesys"
 
 interface IEntries {
   [key: string]: IFile
 }
 
-const entries: IEntries = {};
+const entries: IEntries = {}
 
-export const saveFileObject = (id: string, file: IFile) => {
+export const saveFileObject = (id: string, file: IFile): void => {
   entries[id] = file
 }
 
-export const getFile = (id: string): IFile => {
+export const getFileObject = (id: string): IFile => {
   return entries[id]
 }
