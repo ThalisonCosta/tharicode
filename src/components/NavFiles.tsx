@@ -21,6 +21,7 @@ export default function NavFiles({files, visible}: Props) {
       addOpenedFile(file.id)
     }
   }
+
   return <div className={`source-codes ${visible ? '' : 'hidden'}`}>
   {files.map(file => {
     const isSelected = file.id === selected;
