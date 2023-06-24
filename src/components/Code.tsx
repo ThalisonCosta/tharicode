@@ -14,6 +14,7 @@ import { python } from "@codemirror/lang-python"
 
 import { getFileObject } from "../storage/file";
 import { readFile, writeFile } from "../helpers/filesys";
+import { useSource } from "../context/SourceContext";
 
 interface Props {
   id: string;
@@ -21,6 +22,8 @@ interface Props {
 }
 
 export default function Code({ id, active }: Props) {
+  const { closeFile } = useSource();
+
   const isRendered = useRef(0);
   const editorId = useMemo(() => uuid(), []);
   const editorRef = useRef<EditorView | null>(null)
@@ -42,7 +45,7 @@ export default function Code({ id, active }: Props) {
         doc: content,
         extensions: [
           basicSetup,
-          html(), css(), javascript({typescript: true}),
+          html(), css(), javascript({typescript: true, jsx: true}),
           json(), markdown(), java(),
           python(), rust(),
           materialDark,
@@ -68,11 +71,21 @@ export default function Code({ id, active }: Props) {
   return(
     <main className={`w-full overflow-y-auto ${visible}`} style={{ height: 'calc(100vh - 40px)' }}>
       <div id={editorId} tabIndex={-1} onKeyUp={(ev) => {
-        if (ev.ctrlKey && ev.key === 's') {
-          ev.preventDefault()
-          ev.stopPropagation()
-          onSave()
-        }
+      switch (ev.key) {
+        case 's':
+          if (ev.ctrlKey) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            onSave();
+          }
+          break;
+        case 'w':
+          if (ev.ctrlKey) {
+            ev.stopPropagation();
+            closeFile(id);
+          }
+          break;
+      }
       }}></div>
 
     </main>

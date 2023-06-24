@@ -7,7 +7,7 @@ import FileIcon from "./FileIcon";
 import PreviewImage from "./PreviewImage";
 
 export default function CodeArea() {
-  const { opened, selected, setSelect, delOpenedFile } = useSource();
+  const { opened, selected, setSelect, closeFile } = useSource();
   const scrollRef = useHorizontalScroll()
   const onSelecteItem = (id: string) => {
     setSelect(id);
@@ -19,7 +19,7 @@ export default function CodeArea() {
 
   const close = (ev: React.MouseEvent<HTMLElement, MouseEvent>, id: string) => {
     ev.stopPropagation()
-    delOpenedFile(id)
+    closeFile(id)
   }
 
   return <div id="code-area" className="w-full h-full">

@@ -4,16 +4,16 @@ interface ISourceContext {
   selected: string;
   setSelect: (id: string) => void;
   opened: string[];
-  addOpenedFile: (id: string) => void;
-  delOpenedFile: (id: string) => void;
+  openFile: (id: string) => void;
+  closeFile: (id: string) => void;
 }
 
 const SourceContext = createContext<ISourceContext>({
   selected: '',
   setSelect: (id) => {},
   opened: [],
-  addOpenedFile: (id) => {},
-  delOpenedFile: (id) => {}
+  openFile: (id) => {},
+  closeFile: (id) => {}
 });
 
 export const SourceProvider = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
@@ -24,12 +24,12 @@ export const SourceProvider = ({ children }: { children: JSX.Element | JSX.Eleme
     setSelected(id)
   }
 
-  const addOpenedFile = useCallback((id: string) => {
+  const openFile = useCallback((id: string) => {
     if (opened.includes(id)) return;
     updateOpenedFiles(prevOpen => ([...prevOpen, id]))
   }, [opened])
 
-  const delOpenedFile = useCallback((id: string) => {
+  const closeFile = useCallback((id: string) => {
     updateOpenedFiles(prevOpen => prevOpen.filter(opened => opened !== id))
   }, [opened])
 
@@ -37,15 +37,15 @@ export const SourceProvider = ({ children }: { children: JSX.Element | JSX.Eleme
     selected,
     setSelect,
     opened,
-    addOpenedFile,
-    delOpenedFile
+    openFile,
+    closeFile
   }}>
     {children}
   </SourceContext.Provider>
 }
 
 export const useSource = () => {
-  const { selected, setSelect, opened, addOpenedFile, delOpenedFile } = useContext(SourceContext)
+  const { selected, setSelect, opened, openFile, closeFile } = useContext(SourceContext)
 
-  return { selected, setSelect, opened, addOpenedFile, delOpenedFile }
+  return { selected, setSelect, opened, openFile, closeFile }
 }
