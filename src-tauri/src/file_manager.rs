@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use tauri::api::Error;
 use std::fs;
 use std::path::Path;
 
@@ -52,8 +53,11 @@ pub fn read_directory(dir_path: &str) -> String {
     files_str
 }
 
-pub fn read_file(path: &str) -> String {
-    fs::read_to_string(path).unwrap()
+pub fn read_file(path: &str) -> Result<String, Error> {
+    match fs::read_to_string(path) {
+        Ok(content) => Ok(content),
+        Err(e) => return Err(tauri::api::Error::Io(e))
+    }
 }
 
 pub fn write_file(path: &str, content: &str) -> String {
@@ -61,5 +65,12 @@ pub fn write_file(path: &str, content: &str) -> String {
     match fs::write(file_path, content) {
         Ok(()) => String::from("OK"),
         Err(_err) => String::from("ERROR")
+    }
+}
+pub fn remove_file(path: &str) -> Result<String, Error> {
+    let path = Path::new(path);
+    match fs::remove_file(path) {
+        Ok(_) => Ok("OK".to_owned()),
+        Err(e) => return Err(tauri::api::Error::Io(e))
     }
 }

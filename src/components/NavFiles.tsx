@@ -1,7 +1,7 @@
-import { MouseEvent } from "react"
+import { MouseEvent, useState } from "react"
 import { useSource } from "../context/SourceContext"
 import NavFolderItem from "./NavFolderItem"
-import { IFile } from "../helpers/filesys"
+import { IFile, deleteFile } from "../helpers/filesys"
 import FileIcon from "./FileIcon"
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
 
 export default function NavFiles({files, visible}: Props) {
   const {setSelect, selected, openFile} = useSource()
+  const [_, setFiles] = useState<IFile[]>([])
   
   const onShow = async (ev: React.MouseEvent<HTMLDivElement, MouseEvent>, file: IFile) => {
 
@@ -20,6 +21,14 @@ export default function NavFiles({files, visible}: Props) {
       setSelect(file.id)
       openFile(file.id)
     }
+  }
+
+  const delFile = async (id: string) => {
+    const file = files.find(file => file.id === id)!;
+    
+    await deleteFile(file.path);
+
+    setFiles(prevEntries => prevEntries.filter(f => f.id !== file.id))
   }
 
   return <div className={`source-codes ${visible ? '' : 'hidden'}`}>
@@ -35,7 +44,10 @@ export default function NavFiles({files, visible}: Props) {
       className={`soure-item ${isSelected ? 'source-item-active' : ''} flex items-center gap-2 px-2 py-0.5 text-gray-500 hover:text-gray-400 cursor-pointer`}
     >
       <FileIcon name={file.name} />
-      <span>{file.name}</span>
+      <div className="source-header flex items-center justify-between w-full group">
+        <span>{file.name}</span>
+        <i onClick={() => delFile(file.id)} className="material-icons invisible group-hover:visible">x</i>
+      </div>
     </div>
   })}
 </div>
