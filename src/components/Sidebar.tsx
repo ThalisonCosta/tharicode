@@ -10,11 +10,13 @@ export default function Sidebar() {
   const loadFile = async () => {
     const selected = await open({
       directory: true
-    })
+    }) as string;
 
     if (!selected) return;
 
-    setProjectName(selected as string)
+    const folder = selected.match(/[\\\/](?!.*[\\\/])(.*)/) as string[];
+    setProjectName(folder[1])
+    
     readDirectory(selected + '/').then(setFiles)
   }
 
