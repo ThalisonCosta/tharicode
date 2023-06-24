@@ -30,7 +30,7 @@ pub fn read_directory(dir_path: &str) -> String {
 
         let filename = match path_unwrap.file_name().into_string() {
             Ok(str) => str,
-            Err(error) => String::from("ERROR"),
+            Err(_error) => String::from("ERROR"),
         };
 
         let file_path = dir_path.to_owned() + &filename;
@@ -58,10 +58,8 @@ pub fn read_file(path: &str) -> String {
 
 pub fn write_file(path: &str, content: &str) -> String {
     let file_path = Path::new(path);
-    let result = match fs::write(file_path, content) {
+    match fs::write(file_path, content) {
         Ok(()) => String::from("OK"),
         Err(_err) => String::from("ERROR")
-    };
-
-    result
+    }
 }
