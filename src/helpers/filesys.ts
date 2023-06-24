@@ -41,6 +41,11 @@ export const readDirectory = async (folderPath: string): Promise<IFile[]> => {
   return [...folders, ...entries]
 }
 
+export const readFile = async (filePath: string): Promise<string> => {
+  const content: string = await invoke("file_content", {filePath});
+  return content;
+}
+
 export const writeFile = async (filePath: string, content: string): Promise<string> => {
   const message = await invoke("write_file", { filePath, content });
   if (message !== "OK") {

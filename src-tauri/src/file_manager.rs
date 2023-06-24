@@ -52,6 +52,10 @@ pub fn read_directory(dir_path: &str) -> String {
     files_str
 }
 
+pub fn read_file(path: &str) -> String {
+    fs::read_to_string(path).unwrap()
+}
+
 pub fn write_file(path: &str, content: &str) -> String {
     let file_path = Path::new(path);
     let result = match fs::write(file_path, content) {

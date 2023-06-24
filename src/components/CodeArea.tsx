@@ -2,7 +2,7 @@ import { useSource } from "../context/SourceContext";
 import { IFile } from "../helpers/filesys";
 import { useHorizontalScroll } from "../helpers/horizontalScroll";
 import { getFileObject } from "../storage/file";
-import CodeEditor from "./CodeEditor";
+import Code from "./Code";
 import FileIcon from "./FileIcon";
 import PreviewImage from "./PreviewImage";
 
@@ -47,7 +47,7 @@ export default function CodeArea() {
             return <PreviewImage path={file.path} active={item === selected}/>
           }
 
-          return <CodeEditor key={item} id={item} active={item === selected}/>
+          return <Code key={item} id={item} active={item === selected}/>
         })
       }
     </div>
