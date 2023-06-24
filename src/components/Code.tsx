@@ -11,7 +11,7 @@ import { rust } from "@codemirror/lang-rust";
 import { java } from "@codemirror/lang-java"
 import { python } from "@codemirror/lang-python"
 import { materialDark } from "cm6-theme-material-dark";
-import { getFileObject } from "../storage/file";
+import { getFileObject } from "../helpers/storage";
 import { useSource } from "../context/SourceContext";
 
 interface Props {

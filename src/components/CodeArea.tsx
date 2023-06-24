@@ -1,7 +1,7 @@
 import { useSource } from "../context/SourceContext"
 import { IFile } from "../helpers/filesys"
 import { useHorizontalScroll } from "../helpers/horizontalScroll"
-import { getFileObject } from "../storage/file"
+import { getFileObject } from "../helpers/storage"
 import Code from "./Code"
 import FileIcon from "./FileIcon"
 import PreviewImage from "./PreviewImage"

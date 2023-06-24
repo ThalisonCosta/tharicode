@@ -2,7 +2,7 @@ import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { IFile, readDirectory, writeFile } from "../helpers/filesys";
 import NavFiles from "./NavFiles";
-import { saveFileObject } from "../storage/file";
+import { saveFileObject } from "../helpers/storage";
 
 interface Props {
   file: IFile;

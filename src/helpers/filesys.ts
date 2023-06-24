@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/tauri"
 import { v4 as uuid } from "uuid";
-import { saveFileObject } from "../storage/file";
+import { saveFileObject } from "./storage";
 
 export interface IFile {
   id: string;

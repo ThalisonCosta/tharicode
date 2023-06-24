@@ -1,4 +1,4 @@
-import { IFile } from "../helpers/filesys"
+import { IFile } from "./filesys"
 
 interface IEntries {
   [key: string]: IFile
