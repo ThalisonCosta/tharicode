@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function NavFiles({files, visible}: Props) {
-  const {setSelect, selected, openFile} = useSource()
+  const {setSelect, selected, openFile, closeFile} = useSource()
   const [_, setFiles] = useState<IFile[]>([])
   
   const onShow = async (ev: React.MouseEvent<HTMLDivElement, MouseEvent>, file: IFile) => {
@@ -28,6 +28,7 @@ export default function NavFiles({files, visible}: Props) {
     const index = files.findIndex(file => file.id === id);
     await deleteFile(file.path);
     files.splice(index, 1);
+    closeFile(file.id);
 
     setFiles(prevEntries => [...prevEntries])
   }
