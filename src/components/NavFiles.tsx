@@ -25,10 +25,11 @@ export default function NavFiles({files, visible}: Props) {
 
   const delFile = async (id: string) => {
     const file = files.find(file => file.id === id)!;
-    
+    const index = files.findIndex(file => file.id === id);
     await deleteFile(file.path);
+    files.splice(index, 1);
 
-    setFiles(prevEntries => prevEntries.filter(f => f.id !== file.id))
+    setFiles(prevEntries => [...prevEntries])
   }
 
   return <div className={`source-codes ${visible ? '' : 'hidden'}`}>

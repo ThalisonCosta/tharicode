@@ -43,7 +43,6 @@ export default function CodeArea() {
         }
 
         return <Code key={item} id={item} active={item===selected} />
-
         })}
     </div>
   </div>
