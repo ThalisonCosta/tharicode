@@ -13,7 +13,7 @@ fn greet(name: &str) -> String {
 
 #[tauri::command]
 fn open_folder(folder_path: &str) -> String {
-    file_manager::read_directory(folder_path)
+    file_manager::read_directory(folder_path).unwrap()
 }
 
 #[tauri::command]
@@ -22,12 +22,17 @@ fn file_content(file_path: &str) -> String {
 }
 
 #[tauri::command]
-fn write_file(file_path: &str, content: &str) -> String {
+fn write_file(file_path: &str, content: &str) -> Result<String, String> {
     file_manager::write_file(file_path, content)
+        .map(|_| String::from("File written successfully"))
+        .map_err(|e| e.to_string())
 }
+
 #[tauri::command]
-fn delete_file(file_path: &str) -> String {
-    file_manager::remove_file(file_path).unwrap()
+fn delete_file(file_path: &str) -> Result<String, String> {
+    file_manager::remove_file(file_path)
+    .map(|_| String::from("File deleted successfully"))
+    .map_err(|e| e.to_string())
 }
 
 fn main() {

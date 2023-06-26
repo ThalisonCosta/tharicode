@@ -48,7 +48,7 @@ export const readFile = async (filePath: string): Promise<string> => {
 
 export const deleteFile = async (filePath: string): Promise<string> => {
   const message = await invoke("delete_file", {filePath});
-  if (message !== "OK") {
+  if (message !== "File deleted successfully") {
     throw Error("failed to delete file")
   }
   return message
@@ -56,7 +56,7 @@ export const deleteFile = async (filePath: string): Promise<string> => {
 
 export const writeFile = async (filePath: string, content: string): Promise<string> => {
   const message = await invoke("write_file", { filePath, content });
-  if (message !== "OK") {
+  if (message !== "File written successfully") {
     throw Error("failed to write file")
   }
   return message

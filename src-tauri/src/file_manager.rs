@@ -1,56 +1,42 @@
 use serde::{Deserialize, Serialize};
 use tauri::api::Error;
 use std::fs;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
-//use srt
 #[derive(Serialize, Deserialize, Debug)]
 pub struct File {
     name: String,
     kind: String,
-    path: String,
+    path: PathBuf,
 }
 
-//TODO: remove unwraps
-pub fn read_directory(dir_path: &str) -> String {
+pub fn read_directory(dir_path: &str) -> Result<String, Box<dyn std::error::Error>> {
     let new_path = Path::new(dir_path);
-    let paths = fs::read_dir(new_path).unwrap();
+    let paths = fs::read_dir(new_path)?;
 
-    let mut files: Vec<File> = Vec::new();
+    let files = paths
+        .map(|entry| {
+            let path = entry?.path();
+            let meta = path.metadata()?;
 
-    for path in paths {
-        let path_unwrap = path.unwrap();
-        let meta = path_unwrap.metadata();
-        let meta_unwrap = meta.unwrap();
+            let kind = if meta.is_dir() { "directory" } else { "file" };
 
-        let mut kind = String::from("file");
 
-        if meta_unwrap.is_dir() {
-            kind = String::from("directory");
-        }
+            let filename = path.file_name().and_then(|f| f.to_str()).unwrap_or_default();
 
-        let filename = match path_unwrap.file_name().into_string() {
-            Ok(str) => str,
-            Err(_error) => String::from("ERROR"),
-        };
+            let file_path = new_path.join(filename);
 
-        let file_path = dir_path.to_owned() + &filename;
+            Ok(File {
+                name: filename.to_owned(),
+                kind: kind.to_owned(),
+                path: file_path,
+            })
+        })
+        .collect::<Result<Vec<_>, Box<dyn std::error::Error>>>()?;
 
-        let new_file_info = File {
-            name: filename,
-            kind,
-            path: file_path,
-        };
+    let files_str = serde_json::to_string(&files)?;
 
-        files.push(new_file_info);
-    }
-
-    let files_str = match serde_json::to_string(&files) {
-        Ok(str) => str,
-        Err(error) => panic!("Problem opening the file: {:?}", error),
-    };
-
-    files_str
+    Ok(files_str)
 }
 
 pub fn read_file(path: &str) -> Result<String, Error> {
@@ -60,17 +46,17 @@ pub fn read_file(path: &str) -> Result<String, Error> {
     }
 }
 
-pub fn write_file(path: &str, content: &str) -> String {
+pub fn write_file(path: &str, content: &str) -> Result<(), Error> {
     let file_path = Path::new(path);
     match fs::write(file_path, content) {
-        Ok(()) => String::from("OK"),
-        Err(_err) => String::from("ERROR")
+        Ok(_) => Ok(()),
+        Err(e) => return Err(tauri::api::Error::Io(e))
     }
 }
-pub fn remove_file(path: &str) -> Result<String, Error> {
+pub fn remove_file(path: &str) -> Result<(), Error> {
     let path = Path::new(path);
     match fs::remove_file(path) {
-        Ok(_) => Ok("OK".to_owned()),
+        Ok(_) => Ok(()),
         Err(e) => return Err(tauri::api::Error::Io(e))
     }
 }
