@@ -3,6 +3,7 @@ import { useSource } from "../context/SourceContext"
 import NavFolderItem from "./NavFolderItem"
 import { IFile, deleteFile } from "../helpers/filesys"
 import FileIcon from "./FileIcon"
+import { ask } from "@tauri-apps/api/dialog"
 
 interface Props {
   files: IFile[]
@@ -24,8 +25,12 @@ export default function NavFiles({files, visible}: Props) {
   }
 
   const delFile = async (id: string) => {
+  const canDelete: boolean = await confirm('This action cannot be reverted. Are you sure?');
+    if (!canDelete) return;
+    
     const file = files.find(file => file.id === id)!;
     const index = files.findIndex(file => file.id === id);
+    
     await deleteFile(file.path);
     files.splice(index, 1);
     closeFile(file.id);
