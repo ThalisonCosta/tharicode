@@ -1,4 +1,5 @@
 import { invoke } from "@tauri-apps/api/tauri"
+import { message as messageDialog } from "@tauri-apps/api/dialog"
 import { v4 as uuid } from "uuid";
 import { saveFileObject } from "./storage";
 
@@ -46,18 +47,18 @@ export const readFile = async (filePath: string): Promise<string> => {
   return content;
 }
 
-export const deleteFile = async (filePath: string): Promise<string> => {
+export const deleteFile = async (filePath: string): Promise<void> => {
   const message = await invoke("delete_file", {filePath});
-  if (message !== "File deleted successfully") {
-    throw Error("failed to delete file")
+  if (!message) {
+    await messageDialog("failed to delete file", { type: "error" })
   }
-  return message
+  await messageDialog("file successfully deleted", { type: "info" })
 }
 
-export const writeFile = async (filePath: string, content: string): Promise<string> => {
+export const writeFile = async (filePath: string, content: string): Promise<void> => {
   const message = await invoke("write_file", { filePath, content });
-  if (message !== "File written successfully") {
-    throw Error("failed to write file")
+  if (!message) {
+    await messageDialog("failed to save file", { type: "error" })
   }
-  return message
+  await messageDialog("file successfully saved!", { type: "info" })
 }

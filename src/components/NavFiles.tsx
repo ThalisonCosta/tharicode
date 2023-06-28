@@ -3,7 +3,6 @@ import { useSource } from "../context/SourceContext"
 import NavFolderItem from "./NavFolderItem"
 import { IFile, deleteFile } from "../helpers/filesys"
 import FileIcon from "./FileIcon"
-import { ask } from "@tauri-apps/api/dialog"
 
 interface Props {
   files: IFile[]

@@ -22,16 +22,16 @@ fn file_content(file_path: &str) -> String {
 }
 
 #[tauri::command]
-fn write_file(file_path: &str, content: &str) -> Result<String, String> {
+fn write_file(file_path: &str, content: &str) -> Result<bool, String> {
     file_manager::write_file(file_path, content)
-        .map(|_| String::from("File written successfully"))
+        .map(|_| true)
         .map_err(|e| e.to_string())
 }
 
 #[tauri::command]
-fn delete_file(file_path: &str) -> Result<String, String> {
+fn delete_file(file_path: &str) -> Result<bool, String> {
     file_manager::remove_file(file_path)
-    .map(|_| String::from("File deleted successfully"))
+    .map(|_| true)
     .map_err(|e| e.to_string())
 }
 
