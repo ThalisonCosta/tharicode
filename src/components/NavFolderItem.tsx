@@ -41,7 +41,7 @@ export default function NavFolderItem({ file, active }: Props) {
 
     const filePath = `${file.path}/${filename}`
     
-    writeFile(filePath, '').then(() => {
+    writeFile(filePath, '', true).then(() => {
       const id = uuid();
       const newFile: IFile = {
         id,

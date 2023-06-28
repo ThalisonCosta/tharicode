@@ -55,10 +55,13 @@ export const deleteFile = async (filePath: string): Promise<void> => {
   await messageDialog("file successfully deleted", { type: "info" })
 }
 
-export const writeFile = async (filePath: string, content: string): Promise<void> => {
+export const writeFile = async (filePath: string, content: string, newFile?: boolean): Promise<void> => {
   const message = await invoke("write_file", { filePath, content });
   if (!message) {
     await messageDialog("failed to save file", { type: "error" })
   }
-  await messageDialog("file successfully saved!", { type: "info" })
+  
+  if(newFile) {
+    await messageDialog("file successfully saved!", { type: "info" })
+  }
 }
