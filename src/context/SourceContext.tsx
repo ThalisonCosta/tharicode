@@ -30,8 +30,13 @@ export const SourceProvider = ({ children }: { children: JSX.Element | JSX.Eleme
   }, [opened])
 
   const closeFile = useCallback((id: string) => {
-    updateOpenedFiles(prevOpen => prevOpen.filter(opened => opened !== id))
-  }, [opened])
+    const updatedOpened = opened.filter((openedId) => openedId !== id);
+    updateOpenedFiles(updatedOpened);
+    
+    if (selected === id && updatedOpened.length > 0) {
+      setSelected(updatedOpened[updatedOpened.length - 1]);
+    }
+  }, [opened, selected]);
 
   return <SourceContext.Provider value={{
     selected,
