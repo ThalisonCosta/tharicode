@@ -5,9 +5,10 @@ on:
 
   workflow_dispatch:
 jobs:
+  permissions: write-all
   release:
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         platform: [macos-latest, ubuntu-latest, windows-latest]
         include:
