@@ -20,7 +20,9 @@
       "targets": "all",
       "identifier": "com.tharicode.dev",
       "publisher": "Thalison Costa",
-      "icon": ["icons/32x32.png"],
+      "icon": [
+        "icons/128x128@2x.png"
+      ],
       "resources": [],
       "externalBin": [],
       "category": "DeveloperTool",
@@ -34,7 +36,8 @@
         "minimumSystemVersion": "",
         "exceptionDomain": "",
         "signingIdentity": null,
-        "entitlements": null
+        "entitlements": null,
+        "license": "io.github.ThalisonCosta.tharicode"
       },
       "windows": {
         "certificateThumbprint": null,
@@ -45,9 +48,7 @@
     "updater": {
       "active": false,
       "dialog": false,
-      "endpoints": [
-        "https://youtu.be/ZXjlZBisYPQ"
-      ],
+      "endpoints": [],
       "pubkey": ""
     },
     "allowlist": {
@@ -70,7 +71,11 @@
         "removeDir": true,
         "removeFile": true,
         "renameFile": true,
-        "scope": ["$APP/*", "$DOCUMENT/*", "$DOWNLOAD/*"],
+        "scope": [
+          "$APP/*",
+          "$DOCUMENT/*",
+          "$DOWNLOAD/*"
+        ],
         "writeFile": true
       },
       "globalShortcut": {
