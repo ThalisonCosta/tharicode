@@ -1,17 +1,13 @@
 import Sidebar from "./components/Sidebar"
-import Titlebar from "./components/Titlebar"
 import CodeArea from "./components/CodeArea"
 import { SourceProvider } from "./context/SourceContext"
 
 export default function App() {
-  return <div className="wrapper">
-    <Titlebar />
-    <div id="editor" className="h-screen flex items-start overflow-hidden bg-primary">
+  return <div id="editor" className="flex bg-primary overflow-hidden flex items-start h-screen">
       <SourceProvider>
         <Sidebar />
         <CodeArea />
       </SourceProvider>
-    </div>
   </div>
 }
 

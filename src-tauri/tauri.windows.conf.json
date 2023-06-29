@@ -1,0 +1,17 @@
+{
+  "tauri": {
+      "windows": [
+          {
+              "title": "thaりcode",
+              "label": "main",
+              "minWidth": 1000,
+              "minHeight": 600,
+              "resizable": true,
+              "fullscreen": true,
+              "visible": true,
+              "decorations": true,
+              "alwaysOnTop": false
+            }
+      ]
+  }
+}
