@@ -52,7 +52,6 @@ export const deleteFile = async (filePath: string): Promise<void> => {
   if (!message) {
     await messageDialog("failed to delete file", { type: "error" })
   }
-  await messageDialog("file successfully deleted", { type: "info" })
 }
 
 export const writeFile = async (filePath: string, content: string, newFile?: boolean): Promise<void> => {
@@ -62,6 +61,6 @@ export const writeFile = async (filePath: string, content: string, newFile?: boo
   }
   
   if(newFile) {
-    await messageDialog("file successfully saved!", { type: "info" })
+    await messageDialog("file successfully created!", { type: "info" })
   }
 }
