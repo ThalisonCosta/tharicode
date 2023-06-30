@@ -1,20 +1,13 @@
 # thaりcode
 ![Captura de tela de 2023-06-28 22-15-00](https://github.com/ThalisonCosta/tharicode/assets/80794311/9cc77624-67b9-4bc3-b9e6-6186f3cd53e4)
 
-thaりcode is a clone of Visual Studio Code built using Tauri, npm, React, and TypeScript (TSX). It aims to provide a lightweight and efficient code editor with a familiar interface for developers. The project name "thaりcode" is a combination of different elements that hold personal significance:
-
-- "tha" represents the first three letters of my name, Thalison.
-- "り" is the hiragana letter in Japanese that can be pronounced as both "li" and "ri."
-- "code" refers to the purpose of the application, being a code editor.
- 
-Together, these elements create the unique and meaningful name, thaりcode.
+thaりcode (pronounced as 'taricoude' or 'thalicoude') is a simple clone of [Visual Studio Code](https://code.visualstudio.com/) built using [Tauri](https://tauri.app/), [npm](https://www.npmjs.com/), [React](https://react.dev/), [tailwindcss](https://tailwindcss.com/) and [TypeScript](https://www.typescriptlang.org/). It aims to provide a lightweight and efficient code editor with a familiar interface.
 
 ## Download thaりcode
 
-You can download the latest binary files of thaりcode from the following link: Download thaりcode.
+You can download the latest version of thaりcode [clicking here](https://github.com/ThalisonCosta/tharicode/releases/tag/main)
 
-After downloading, execute the binary file to run the thaりcode application.
-License
+## License
 
 thaりcode is open source and released under the MIT License. Feel free to explore, modify, and distribute the codebase according to the terms of the license.
 
@@ -22,23 +15,25 @@ thaりcode is open source and released under the MIT License. Feel free to explo
 
 If you want to contribute to thaりcode, simply follow these steps:
 
-Be sure that you have [rust installed](https://www.rust-lang.org/tools/install)
+Be sure that you have [node](https://nodejs.org/en/download) and [tauri prerequisites](https://tauri.app/v1/guides/getting-started/prerequisites) installed
 
 Clone the repository to your machine.
 
 ```git clone https://github.com/ThalisonCosta/tharicode.git```
 
-Open the thaりcode repository in your preferred code editor (also known as thaりcode 😉).
 
 Navigate to the project directory.
 
 ```cd tharicode```
 
+
+Open the thaりcode repository in your preferred code editor (also known as thaりcode 😉).
+
   Install the project dependencies using npm.
 
 ```npm install ```
 
-  Start the development server.
+  Start the development.
 
 ```npm run tauri dev```
 
@@ -54,7 +49,7 @@ Create a new branch for your changes.
 
   Push your branch to the repository.
 
-```git push origin my-branch ```
+```git push origin my-feature ```
 
   Open a pull request.
 
