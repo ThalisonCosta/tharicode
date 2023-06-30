@@ -29,6 +29,7 @@ const icons: Icons = {
   tiff: image,
   bmp: image,
   tsx,
+  jsx: tsx,
   css,
   ts,
   js,
