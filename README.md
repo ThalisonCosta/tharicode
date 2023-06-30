@@ -1,7 +1,8 @@
 # thaりcode
-![Captura de tela de 2023-06-28 22-15-00](https://github.com/ThalisonCosta/tharicode/assets/80794311/9cc77624-67b9-4bc3-b9e6-6186f3cd53e4)
 
-thaりcode (pronounced as 'taricoude' or 'thalicoude') is a simple clone of [Visual Studio Code](https://code.visualstudio.com/) built using [Tauri](https://tauri.app/), [npm](https://www.npmjs.com/), [React](https://react.dev/), [tailwindcss](https://tailwindcss.com/) and [TypeScript](https://www.typescriptlang.org/). It aims to provide a lightweight and efficient code editor with a familiar interface.
+![thaりcode editor](https://github.com/ThalisonCosta/tharicode/blob/main/image.png)
+
+thaりcode (pronounced as 'tharicoude' or 'thalicoude') is a simple clone of [Visual Studio Code](https://code.visualstudio.com/) built using [Tauri](https://tauri.app/), [npm](https://www.npmjs.com/), [React](https://react.dev/), [tailwindcss](https://tailwindcss.com/) and [TypeScript](https://www.typescriptlang.org/). It aims to provide a lightweight and efficient code editor with a familiar interface.
 
 ## Download thaりcode
 
