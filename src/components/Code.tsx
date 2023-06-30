@@ -68,14 +68,14 @@ export default function CodeEditor({ id, active }: Props) {
     <div id={editorId} tabIndex={-1} onKeyUp={(ev) => {
       switch (ev.key) {
       case 's':
-        if (ev.ctrlKey) {
+        if (ev.ctrlKey || ev.keyCode || ev.metaKey) {
           ev.preventDefault();
           ev.stopPropagation();
           onSave();
         }
         break;
       case 'w':
-        if (ev.ctrlKey) {
+        if (ev.ctrlKey || ev.keyCode || ev.metaKey) {
           ev.stopPropagation();
           closeFile(id);
         }
