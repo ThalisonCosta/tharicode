@@ -21,7 +21,8 @@
       "identifier": "com.tharicode.dev",
       "publisher": "Thalison Costa",
       "icon": [
-        "icons/128x128@2x.png"
+        "icons/128x128@2x.png",
+        "icons/icon.ico"
       ],
       "resources": [],
       "externalBin": [],
