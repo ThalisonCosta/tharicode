@@ -1,17 +1,21 @@
 MIT License
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of the Tharicode editor and associated documentation files (the "Editor"), to deal in the Editor without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Editor, and to permit persons to whom the Editor is furnished to do so, subject to the following conditions:
+Copyright (c) 2023 Thalison Costa Dias
 
-The Editor, Tharicode, developed by Thalison in 2023, may only access directories on the user's system and shall not have access to any other system functions. The Editor will not perform any actions that may compromise the security, integrity, or privacy of the user's system.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-The Editor may be modified and distributed under the same license terms as provided herein. Any modifications made to the Editor shall be clearly documented and attributed to the respective authors.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-The Tharicode Editor may be used for both personal and commercial purposes. However, if the Editor is incorporated into any software or product, a prominent acknowledgment must be given, crediting the Tharicode Editor and its contributors.
-
-The Editor may contain third-party components, libraries, or frameworks, which may have their own separate licenses. These licenses must be respected and included along with the Editor.
-
-By using or distributing the Tharicode Editor, you agree to comply with the terms and conditions of this license. If you do not agree with these terms, you are prohibited from using or distributing the Editor.
-
-Thalison Costa
-Contact: thalisoncosta123@gmail.com
-June 2023
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
